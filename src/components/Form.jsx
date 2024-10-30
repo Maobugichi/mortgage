@@ -128,7 +128,7 @@ const divRef = useRef(null)
             name="repayment"
             value={isMortgage.repayment}
             setMortgage={setMortgage}
-          
+            
              checked={checked}
              setChecked={setChecked}
              setShow={setShow}
@@ -156,7 +156,7 @@ const divRef = useRef(null)
 }
 
 
-function Input({type="text",value,name,setMortgage,width="10px",checked,setShow}) {
+function Input({type="text",value,name,setMortgage,width="w-[10px]",checked,setShow}) {
     function getInputValue(e) {
     setMortgage(prev => {
     return {
@@ -188,7 +188,7 @@ function Input({type="text",value,name,setMortgage,width="10px",checked,setShow}
 
    
   }
-  return <input onChange={getInputValue}  className={`transition-all duration-300 hover:border-slate-900 pl-[15%] border-2 lg:h-[50px] h-[60px] lg:${width} rounded-md border-slate-500`} type={type} value={value} name={name}/>
+  return <input onChange={getInputValue}  className={`transition-all duration-300 hover:border-slate-900 pl-[15%] border-2 lg:h-[50px] h-[60px] ${width} rounded-md border-slate-500`} type={type} value={value} name={name}/>
 }
 
 function Button() {
