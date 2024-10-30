@@ -15,7 +15,7 @@ export default function Result({result,isMortgage,isRepaid}) {
           <h3 className="text-xl font-semibold text-white ">Your results</h3>
           <p className="w-[95%] text-slate-500">Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayment again"</p>
          <div className="h-[75%] border-t-4 border-lime rounded-lg flex items-center bg-slater">
-            <div className=" h-[80%] w-[90%] mx-auto flex flex-col gap-5">
+            <div className=" h-[60%] w-[90%] mx-auto flex flex-col gap-5">
              <div className="border-b border-slate-500 h-[60%]">
               <p className="text-slate-500">Your monthly repayments</p>
               <p className="text-[70px] text-lime">£{result.monthly}</p>
@@ -30,7 +30,7 @@ export default function Result({result,isMortgage,isRepaid}) {
         </div>
 
         :
-        <div className="h-[90%]  lg:h-[90vh]  flex flex-col items-center justify-center">
+        <div className="h-[90%] bg-red  lg:h-[90vh]  flex flex-col items-center justify-center">
         <img className="h-[200px]" src={empty} alt="empty illustration" />
         <h2 className="text-2xl text-center text-white font-semibold lg:mb-4">Results shown here</h2>
         <p className="w-[80%] text-slate-100 text-center mx-auto">Complete the form andclick "calculate repayments" to see what your monthly repayments would be</p>
