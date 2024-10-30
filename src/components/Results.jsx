@@ -9,7 +9,7 @@ export default function Result({result,isMortgage,isRepaid}) {
 
     
    return(
-    <div className="bg-slate-900 lg:w-[48%] w-full lg:h-auto lg:min-h-[115vh] h-auto min-h-[55vh] lg:rounded-bl-[100px] lg:rounded-tr-3xl lg:rounded-br-3xl grid items-center lg:block">
+    <div className="bg-slate-900 lg:w-[48%] w-full lg:h-auto lg:min-h-[115vh] h-auto min-h-[100vh] lg:rounded-bl-[100px] lg:rounded-tr-3xl lg:rounded-br-3xl grid items-center lg:block">
         {Object.values(result).length == 2 && isRepaid ?
         <div className="lg:h-[90vh]  mt-5 h-[90%] w-[90%] mx-auto flex flex-col gap-4">
           <h3 className="text-xl font-semibold text-white ">Your results</h3>
