@@ -13,8 +13,7 @@ const divRef = useRef(null)
   console.log(divRef)
   divRef.current.querySelectorAll('input').forEach(item => {
     if (item.type == "radio") {
-      item.classList.remove("h-[60px]")
-      item.classList.add("h-2")
+      
     }
   })
  }, [])
@@ -163,7 +162,7 @@ const divRef = useRef(null)
 }
 
 
-function Input({type="text",value,name,setMortgage,width="w-[10px]",checked,setShow}) {
+function Input({type="text",value,name,setMortgage,width="w-[18px]",checked,setShow}) {
     function getInputValue(e) {
     setMortgage(prev => {
     return {
