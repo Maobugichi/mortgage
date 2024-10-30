@@ -30,7 +30,7 @@ export default function Result({result,isMortgage,isRepaid}) {
         </div>
 
         :
-        <div className="h-[54%]  lg:h-[90vh]  flex flex-col items-center justify-center">
+        <div className="h-[90%]  lg:h-[90vh]  flex flex-col items-center justify-center">
         <img className="h-[200px]" src={empty} alt="empty illustration" />
         <h2 className="text-2xl text-center text-white font-semibold lg:mb-4">Results shown here</h2>
         <p className="w-[80%] text-slate-100 text-center mx-auto">Complete the form andclick "calculate repayments" to see what your monthly repayments would be</p>
