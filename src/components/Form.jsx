@@ -13,7 +13,7 @@ const divRef = useRef(null)
   console.log(divRef)
   divRef.current.querySelectorAll('input').forEach(item => {
     if (item.type == "radio") {
-      
+      item.classList.add("h-2")
     }
   })
  }, [])
@@ -82,7 +82,7 @@ const divRef = useRef(null)
     <form ref={divRef} onSubmit={submit} className=" w-[90%] lg:w-[85%] mx-auto h-auto min-h-[80vh] pb-10  lg:min-h-[85vh]   flex flex-col gap-4 lg:justify-between">
       <div className="  relative flex flex-col gap-2 mb-3 h-[120px] ">
         <label htmlFor="Amount">Mortgage Amount</label> 
-        <p className="absolute top-[28.5%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.5px] text-2xl text-slate-700 flex items-center justify-center">£</p>
+        <p className="absolute top-[28%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.5px] text-2xl text-slate-700 flex items-center justify-center">£</p>
         <Input
           name="amount"
           value={isMortgage.amount}
@@ -111,7 +111,7 @@ const divRef = useRef(null)
         <div className=" flex flex-col lg:w-[48%] w-full gap-1 relative h-auto min-h-[130px] lg:h-[120px]">
        
            <label htmlFor="Amount">Morgage Interest</label>
-           <p className="absolute  top-[23%] lg:top-[23%] w-[50px] right-[0.5%] bg-slate-100 rounded-r lg:h-[46px] h-[55.9px] text-2xl text-slate-700 flex items-center justify-center">%</p>
+           <p className="absolute  top-[23%] lg:top-[23%] w-[50px] right-[0.4%] bg-slate-100 rounded-r lg:h-[46px] h-[55.9px] text-2xl text-slate-700 flex items-center justify-center">%</p>
             <Input
              name="interest"
              value={isMortgage.interest}
@@ -162,7 +162,7 @@ const divRef = useRef(null)
 }
 
 
-function Input({type="text",value,name,setMortgage,width="w-[18px]",checked,setShow}) {
+function Input({type="text",value,name,setMortgage,width="w-[10px]",checked,setShow}) {
     function getInputValue(e) {
     setMortgage(prev => {
     return {
