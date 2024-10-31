@@ -15,8 +15,6 @@ const divRef = useRef(null)
       item.classList.remove("h-[60px]")
       item.classList.add("h-5")
     }
-
-   
   })
  }, [])
 
@@ -24,7 +22,6 @@ const divRef = useRef(null)
    e.preventDefault();
    setIsRepaid(isMortgage.repaid)
    isMortgage.repaid ? setShow("hidden") : setShow("block")
-   
    const re = divRef.current.querySelectorAll('input').forEach(item => {
      if (item.value == "" && item.type !== "radio") {
         item.classList.add("border-red")
@@ -53,21 +50,16 @@ const divRef = useRef(null)
            return monthlyPayment
         }
         const monthlyRepayment = calculateMortgage(principle,years,interestRate)
-
-        console.log(monthlyRepayment * years)
-
         function calculateTotal(years,monthlyRepayment) {
            const fullTerm = years * 12 * monthlyRepayment
            return fullTerm
         }
-
         const term = calculateTotal(years,monthlyRepayment)
         setResult({
           monthly:monthlyRepayment.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2}),
           term: term.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2})
         })
      }
-
      item.checked = false
     })
     
@@ -81,9 +73,10 @@ const divRef = useRef(null)
  return(
     <form ref={divRef} onSubmit={submit} className=" w-[90%] lg:w-[85%] mx-auto h-auto min-h-[80vh] pb-10  lg:min-h-[85vh]   flex flex-col gap-4 lg:justify-between">
       <div className="  relative flex flex-col gap-2 mb-3 h-[120px] ">
-        <label htmlFor="Amount">Mortgage Amount</label> 
-        <p className="absolute top-[28%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.6px] text-2xl text-slate-700 flex items-center justify-center">£</p>
+        <label htmlFor="amount">Mortgage Amount</label> 
+        <p className="absolute top-[28.3%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.6px] text-2xl text-slate-700 flex items-center justify-center">£</p>
         <Input
+          id="amount"
           name="amount"
           value={isMortgage.amount}
           setMortgage={setMortgage}
@@ -95,9 +88,10 @@ const divRef = useRef(null)
       </div>
       <div className="flex flex-col lg:flex-row w-full justify-between mb-3 lg:min-h-[120px]  h-auto min-h-[230px]  gap-3">
         <div className="flex flex-col lg:w-[48%] w-full gap-1 relative h-auto min-h-[130px] lg:h-[120px]">
-            <label htmlFor="Amount">Mortgage Term</label>
+            <label htmlFor="term">Mortgage Term</label>
             <p className="absolute  top-[23%] lg:top-[23%]  w-[90px]  right-[0.5%] bg-slate-100 rounded-r lg:h-[46px] h-[56px] text-2xl text-slate-700 flex items-center justify-center">years</p>
             <Input
+            id="term"
             name="term"
             value={isMortgage.term}
             setMortgage={setMortgage}
@@ -108,11 +102,12 @@ const divRef = useRef(null)
              <span className={`text-red hidden`}>This field is required</span>
         </div>
 
-        <div className=" flex flex-col lg:w-[48%] w-full gap-1 relative h-auto min-h-[130px] lg:h-[120px]">
+        <div className="flex flex-col lg:w-[48%] w-full gap-1 relative h-auto min-h-[130px] lg:h-[120px]">
        
-           <label htmlFor="Amount">Morgage Interest</label>
+           <label htmlFor="interest">Morgage Interest</label>
            <p className="absolute  top-[23.2%] lg:top-[23%] w-[50px] right-[0.4%] bg-slate-100 rounded-r lg:h-[46px] h-[55.9px] text-2xl text-slate-700 flex items-center justify-center">%</p>
             <Input
+             id="interest"
              name="interest"
              value={isMortgage.interest}
              setMortgage={setMortgage}
@@ -128,13 +123,12 @@ const divRef = useRef(null)
        <div className="flex flex-col gap-3 mb-5">
         <label htmlFor="">Manage Type</label>
         <div className="transition-all duration-300 hover:bg-slate-100/20 flex items-center h-[60px] border-2 border-slate-500 hover:border-lime rounded-md gap-2 pl-5">
-          
           <Input
-           type="radio"
+            id="repayment"
+            type="radio"
             name="repayment"
             value={isMortgage.repayment}
             setMortgage={setMortgage}
-            
              checked={checked}
              setChecked={setChecked}
              setShow={setShow}
@@ -148,14 +142,12 @@ const divRef = useRef(null)
             name="repayment"
             value={isMortgage.repayment}
             setMortgage={setMortgage}
-          
             setShow={setShow}
           />
           <label htmlFor="">Interest Only</label>
         </div>
         <span ref={spanRef} className={`text-red ${isShow}`}>This field is required</span>
        </div>
-
        <Button/>
     </form>
   )
@@ -208,5 +200,5 @@ function Input({type="text",value,name,setMortgage,width="w-5",checked,setShow})
 }
 
 function Button() {
-    return <button className="transition-all duration-300 hover:bg-lime/60 lg:h-[52px] h-[52px] rounded-full flex items-center justify-center bg-lime lg:w-[70%] w-full gap-3 text-xl "><img src={cal} alt="" /> Calculate Repayments</button>
+    return <button className="transition-all duration-300 hover:bg-lime/60 lg:h-[52px] h-[52px] rounded-full flex items-center justify-center bg-lime lg:w-[70%] w-full gap-3 text-xl "><img src={cal} alt="calculator icon" /> Calculate Repayments</button>
 }
