@@ -162,7 +162,7 @@ const divRef = useRef(null)
 }
 
 
-function Input({type="text",value,name,setMortgage,width="w-[10px]",checked,setShow}) {
+function Input({type="text",value,name,setMortgage,width="w-5",checked,setShow}) {
     function getInputValue(e) {
     setMortgage(prev => {
     return {
