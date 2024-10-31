@@ -25,7 +25,7 @@ export default function Main() {
 
   return(
     <main className="overflow-hidden font-custom-font lg:h-[130vh] h-[190vh]  bg-green-300 lg:grid lg:items-center">
-      <section className=" shadow-lg lg:w-[80%]  lg:mx-auto lg:pl-6 lg:h-auto lg:min-h-[110vh] h-auto min-h-[180vh] bg-slate-300  lg:rounded-3xl justify-between flex lg:flex-row flex-col w-full  items-center">
+      <section className=" shadow-lg lg:w-[80%]  lg:mx-auto lg:pl-6 lg:h-auto lg:min-h-[110vh] h-auto min-h-[180vh]  lg:rounded-3xl justify-between flex lg:flex-row flex-col w-full  items-center">
         <div className="h-auto   lg:min-h-[100vh]   lg:w-1/2 w-full">
          <div className="h-[80px] flex w-[90%] lg-h-[85%] mx-auto justify-between items-center">
            <h1 className="text-2xl text-slate-900 font-semibold">Mortgage Calculator</h1>

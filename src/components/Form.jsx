@@ -10,10 +10,10 @@ const divRef = useRef(null)
 
  useEffect(() => {
   setShow("hidden")
-  console.log(divRef)
   divRef.current.querySelectorAll('input').forEach(item => {
     if (item.type == "radio") {
-      item.classList.add("h-2")
+      item.classList.remove("h-[60px]")
+      item.classList.add("h-5")
     }
   })
  }, [])
