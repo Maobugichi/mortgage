@@ -15,6 +15,8 @@ const divRef = useRef(null)
       item.classList.remove("h-[60px]")
       item.classList.add("h-5")
     }
+
+   
   })
  }, [])
 
@@ -82,7 +84,7 @@ const divRef = useRef(null)
     <form ref={divRef} onSubmit={submit} className=" w-[90%] lg:w-[85%] mx-auto h-auto min-h-[80vh] pb-10  lg:min-h-[85vh]   flex flex-col gap-4 lg:justify-between">
       <div className="  relative flex flex-col gap-2 mb-3 h-[120px] ">
         <label htmlFor="Amount">Mortgage Amount</label> 
-        <p className="absolute top-[28%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.5px] text-2xl text-slate-700 flex items-center justify-center">£</p>
+        <p className="absolute top-[28.9%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.5px] text-2xl text-slate-700 flex items-center justify-center">£</p>
         <Input
           name="amount"
           value={isMortgage.amount}
@@ -111,7 +113,7 @@ const divRef = useRef(null)
         <div className=" flex flex-col lg:w-[48%] w-full gap-1 relative h-auto min-h-[130px] lg:h-[120px]">
        
            <label htmlFor="Amount">Morgage Interest</label>
-           <p className="absolute  top-[23%] lg:top-[23%] w-[50px] right-[0.4%] bg-slate-100 rounded-r lg:h-[46px] h-[55.9px] text-2xl text-slate-700 flex items-center justify-center">%</p>
+           <p className="absolute  top-[23.2%] lg:top-[23%] w-[50px] right-[0.4%] bg-slate-100 rounded-r lg:h-[46px] h-[55.9px] text-2xl text-slate-700 flex items-center justify-center">%</p>
             <Input
              name="interest"
              value={isMortgage.interest}
@@ -164,39 +166,43 @@ const divRef = useRef(null)
 
 function Input({type="text",value,name,setMortgage,width="w-5",checked,setShow}) {
     function getInputValue(e) {
-    setMortgage(prev => {
-    return {
-     ...prev,
-     [e.target.name]: e.target.value,
-    }
-    })
-
-    console.log(e.target.previousElementSibling)
-    if (e.target.type !== "radio") {
-      e.target.classList.remove("border-slate-500")
-      e.target.classList.add("border-lime")
-      e.target.previousElementSibling.classList.remove("bg-slate-100","text-slate-100")
-      e.target.previousElementSibling.classList.remove("bg-red")
-      e.target.previousElementSibling.classList.add("bg-lime","text-slate-900")
-    }
-
-
-    if (e.target.type == "radio") {
-        console.log(e.target.checked)
-        e.target.classList.add("accent-lime")
+      if (!isNaN(e.target.value)) {
         setMortgage(prev => {
-            return {
-              ...prev,
-             repaid:  e.target.checked 
-            }
-        })
-    }
-
+          return {
+           ...prev,
+           [e.target.name]: e.target.value,
+          }
+          })
+      
+      
+          if (e.target.type !== "radio") {
+            e.target.classList.remove("border-slate-500")
+            e.target.classList.add("border-lime")
+            e.target.previousElementSibling.classList.remove("bg-slate-100","text-slate-100")
+            e.target.previousElementSibling.classList.remove("bg-red")
+            e.target.previousElementSibling.classList.add("bg-lime","text-slate-900")
+          }
+      
+      
+          if (e.target.type == "radio") {
+              console.log(e.target.checked)
+              e.target.classList.add("accent-lime")
+              setMortgage(prev => {
+                  return {
+                    ...prev,
+                   repaid:  e.target.checked 
+                  }
+              })
+          }
+      
+      }
+    
+    console.log(!isNaN(e.target.value))
    
   }
   return <input onChange={getInputValue}  className={`transition-all duration-300 hover:border-slate-900 pl-[15%] border-2 lg:h-[50px] h-[60px] ${width} rounded-md border-slate-500`} type={type} value={value} name={name}/>
 }
 
 function Button() {
-    return <button className="transition-all duration-300 hover:bg-lime/60 lg:h-[52px] h-[52px] rounded-full flex items-center justify-center bg-lime lg:w-[70%] w-[95%] gap-3 text-xl "><img src={cal} alt="" /> Calculate Repayments</button>
+    return <button className="transition-all duration-300 hover:bg-lime/60 lg:h-[52px] h-[52px] rounded-full flex items-center justify-center bg-lime lg:w-[70%] w-full gap-3 text-xl "><img src={cal} alt="" /> Calculate Repayments</button>
 }
