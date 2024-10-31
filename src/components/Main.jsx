@@ -8,7 +8,7 @@ export default function Main() {
     term:"",
     interest:""
   })
-  
+  const [isShow,setShow] = useState(null)
   const [result, setResult] = useState({})
   const [isRepaid, setIsRepaid] = useState()
   const refi = useRef(null)
@@ -23,7 +23,7 @@ export default function Main() {
 
     setIsRepaid(null)
     setResult({})
-
+    setShow("hidden")
    refi.current.querySelectorAll('input').forEach(item => {
     if (item.type !== "radio") {
       item.classList.remove("border-red")
@@ -51,7 +51,9 @@ export default function Main() {
          setMortgage={setMortgage}
          result={result}
          setResult={setResult}
-        setIsRepaid={setIsRepaid}
+         setIsRepaid={setIsRepaid}
+         isShow={isShow}
+         setShow={setShow}
          />
         </div> 
       
@@ -60,6 +62,7 @@ export default function Main() {
          setResult={setResult}
          isMortgage={isMortgage}
          isRepaid={isRepaid}
+        
         />
       </section>  
      

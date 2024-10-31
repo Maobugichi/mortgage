@@ -1,10 +1,10 @@
 import cal from "../assets/images/icon-calculator.svg"
 import { useRef,useState, useEffect } from "react";
 
-export default function Form({isMortgage,setMortgage,setResult,setIsRepaid}) {
+export default function Form({isMortgage,setMortgage,setResult,setIsRepaid,isShow,setShow}) {
  
 const spanRef = useRef(null)
-const [isShow,setShow] = useState(null)
+
 const [checked,setChecked] = useState(false)
 const divRef = useRef(null)
 
@@ -42,7 +42,7 @@ const divRef = useRef(null)
         item.nextElementSibling.classList.remove("block")
         item.previousElementSibling.classList.add("bg-slate-100","text-slate-700")
         item.previousElementSibling.classList.remove("bg-red","text-slate-100")
-         item.classList.remove("border-lime")
+        item.classList.remove("border-lime")
         const principle = isMortgage.amount
         const years = isMortgage.term
         const interestRate = isMortgage.interest
@@ -62,8 +62,6 @@ const divRef = useRef(null)
         }
 
         const term = calculateTotal(years,monthlyRepayment)
-
-        console.log(years)
         setResult({
           monthly:monthlyRepayment.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2}),
           term: term.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2})
@@ -84,7 +82,7 @@ const divRef = useRef(null)
     <form ref={divRef} onSubmit={submit} className=" w-[90%] lg:w-[85%] mx-auto h-auto min-h-[80vh] pb-10  lg:min-h-[85vh]   flex flex-col gap-4 lg:justify-between">
       <div className="  relative flex flex-col gap-2 mb-3 h-[120px] ">
         <label htmlFor="Amount">Mortgage Amount</label> 
-        <p className="absolute top-[28%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.5px] text-2xl text-slate-700 flex items-center justify-center">£</p>
+        <p className="absolute top-[28%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.6px] text-2xl text-slate-700 flex items-center justify-center">£</p>
         <Input
           name="amount"
           value={isMortgage.amount}
