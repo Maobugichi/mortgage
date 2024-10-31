@@ -84,7 +84,7 @@ const divRef = useRef(null)
     <form ref={divRef} onSubmit={submit} className=" w-[90%] lg:w-[85%] mx-auto h-auto min-h-[80vh] pb-10  lg:min-h-[85vh]   flex flex-col gap-4 lg:justify-between">
       <div className="  relative flex flex-col gap-2 mb-3 h-[120px] ">
         <label htmlFor="Amount">Mortgage Amount</label> 
-        <p className="absolute top-[28.9%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.5px] text-2xl text-slate-700 flex items-center justify-center">£</p>
+        <p className="absolute top-[28%]  w-[50px] left-[1px] bg-slate-100 rounded-l lg:h-[46px] h-[54.6px] text-2xl text-slate-700 flex items-center justify-center">£</p>
         <Input
           name="amount"
           value={isMortgage.amount}
@@ -195,6 +195,14 @@ function Input({type="text",value,name,setMortgage,width="w-5",checked,setShow})
               })
           }
       
+      } else {
+        if (e.target.type !== "radio") {
+          e.target.classList.add("border-slate-500")
+          e.target.classList.remove("border-lime")
+          e.target.previousElementSibling.classList.add("bg-slate-100","text-slate-100")
+          e.target.previousElementSibling.classList.remove("bg-red")
+          e.target.previousElementSibling.classList.remove("bg-lime","text-slate-900")
+        }
       }
     
     console.log(!isNaN(e.target.value))
