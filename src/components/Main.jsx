@@ -25,13 +25,16 @@ export default function Main() {
     setResult({})
 
    refi.current.querySelectorAll('input').forEach(item => {
-    item.classList.remove("border-red")
-        item.classList.add("border-slate-500")
-        item.nextElementSibling.classList.add("hidden")
-        item.nextElementSibling.classList.remove("block")
-        item.previousElementSibling.classList.add("bg-slate-100","text-slate-700")
-        item.previousElementSibling.classList.remove("bg-red","text-slate-100")
-        item.classList.remove("border-lime")
+    if (item.type !== "radio") {
+      item.classList.remove("border-red")
+      item.classList.add("border-slate-500")
+      item.nextElementSibling.classList.add("hidden")
+      item.nextElementSibling.classList.remove("block")
+      item.previousElementSibling.classList.add("bg-slate-100","text-slate-700")
+      item.previousElementSibling.classList.remove("bg-red","text-slate-100")
+      item.classList.remove("border-lime")
+    }
+       
    })
   }
 
